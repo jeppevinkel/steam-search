@@ -13,7 +13,18 @@ composer require jeppevinkel/steam-search
 ```php
 use SteamSearch\SteamSearch;
 
-// API not implemented yet.
+$steamSearch = new SteamSearch();
+$queryBuilder = QueryBuilder::create()->search('counter-strike')->sortByReleaseDate();
+$result = $steamSearch->search($queryBuilder);
+```
+
+The result is an array of SearchResult objects.
+They each have the following properties:
+```php
+public string $title;
+public string $url;
+public ?Carbon $releaseDate;
+public string $reviewSummary;
 ```
 
 ## Contributing

@@ -17,6 +17,7 @@
     }
   ],
   "require": {
+    "php": ">=7.4",
     "ext-dom": "*",
     "fabpot/goutte": "^4.0",
     "nesbot/carbon": "^2.57"
