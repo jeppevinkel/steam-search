@@ -45,4 +45,11 @@ class SteamSearchTest extends TestCase
 
         $this->assertEquals(Carbon::createFromFormat('!d M, Y', '21 Aug, 2012'), $result[0]->releaseDate, 'Dates are not equal');
     }
+
+    public function testSearchException()
+    {
+        $this->expectException(\InvalidArgumentException::class);
+        $steamSearch = new SteamSearch();
+        $steamSearch->search(2345);
+    }
 }
