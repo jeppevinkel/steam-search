@@ -63,13 +63,13 @@ class QueryBuilderTest extends TestCase
     public function test__toString()
     {
         $queryBuilder = QueryBuilder::create('test');
-        $this->assertEquals('https://store.steampowered.com/search/?term=test&sort_by=', (string)$queryBuilder);
+        $this->assertEquals('https://store.steampowered.com/search/?term=test', (string)$queryBuilder);
     }
 
     public function testSearch()
     {
         $queryBuilder = QueryBuilder::create();
-        $this->assertEquals('https://store.steampowered.com/search/?term=counter-strike&sort_by=', (string)$queryBuilder->search('counter-strike'));
+        $this->assertEquals('https://store.steampowered.com/search/?term=counter-strike', (string)$queryBuilder->search('counter-strike'));
     }
 
     public function testSortByReleaseDate()
