@@ -1,6 +1,6 @@
 # Steam Search
 
-[![Packagist Version](https://img.shields.io/packagist/v/jeppevinkel/steam-search)](https://packagist.org/packages/jeppevinkel/steam-search)
+[![Packagist Version](https://img.shields.io/packagist/v2/jeppevinkel/steam-search)](https://packagist.org/packages/jeppevinkel/steam-search)
 ![Packagist PHP Version Support](https://img.shields.io/packagist/php-v/jeppevinkel/steam-search)
 [![Codecov](https://img.shields.io/codecov/c/github/jeppevinkel/steam-search)](https://app.codecov.io/gh/jeppevinkel/steam-search/)
 
@@ -18,11 +18,16 @@ composer require jeppevinkel/steam-search
 use SteamSearch\SteamSearch;
 
 $steamSearch = new SteamSearch();
-$queryBuilder = QueryBuilder::create()->search('counter-strike')->sortByReleaseDate();
+$queryBuilder = QueryBuilder::create()
+    ->search('counter-strike')
+    ->sortByReleaseDate();
 $result = $steamSearch->search($queryBuilder);
 
 // Results can also be filtered by max price.
-$queryBuilder = QueryBuilder::create()->search('counter-strike')->sortByReleaseDate()->maxPrice(50);
+$queryBuilder = QueryBuilder::create()
+    ->search('counter-strike')
+    ->sortByReleaseDate()
+    ->maxPrice(50);
 // Valid values for maxPrice are:
 // 0, 5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 55, 60
 // To get all results, use maxPrice(-1), this is also the default value.
