@@ -55,10 +55,15 @@ class SteamSearch
             try {
                 $release = Carbon::createFromFormat('!d M, Y', trim($release));
             } catch (\Exception $e) {
-                echo PHP_EOL;
-                echo $release . PHP_EOL;
-                echo ($e->getMessage() . ' : ' . $e->getCode()) . PHP_EOL;
-                $release = null;
+                try {
+                    $release = Carbon::createFromFormat('!M d, Y', trim($release));
+                } catch (\Exception $e) {
+                    try {
+                        $release = Carbon::createFromFormat('!Y', trim($release));
+                    } catch (\Exception $e) {
+                        $release = null;
+                    }
+                }
             }
 
             $searchResult = new SearchResult($title, $url, $release, $review);
