@@ -21,6 +21,11 @@ class SearchResult
     public string $title;
 
     /**
+     * @var integer
+     */
+    public int $appId;
+
+    /**
      * @var string
      */
     public string $url;
@@ -35,11 +40,12 @@ class SearchResult
      */
     public string $reviewSummary;
 
-    public function __construct(string $title, string $url, ?Carbon $releaseDate, string $reviewSummary)
+    public function __construct(string $title, string $url, ?Carbon $releaseDate, string $reviewSummary, int $appId)
     {
         $this->title = $title;
         $this->url = $url;
         $this->releaseDate = $releaseDate;
         $this->reviewSummary = $reviewSummary;
+        $this->appId = $appId;
     }
 }

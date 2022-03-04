@@ -46,6 +46,7 @@ class SteamSearch
         $results = [];
         $crawler->filter('div#search_resultsRows a')->each(function (Crawler $game) use (&$results) {
             $url = $game->attr('href');
+            $appid = intval($game->attr('data-ds-appid'));
             $title = $game->filter('div.responsive_search_name_combined div.search_name span.title')->text();
             $release = $game->filter('div.responsive_search_name_combined div.search_released')->text('');
             $reviewAttributes = $game->filter('div.responsive_search_name_combined div.search_reviewscore span')->extract(['data-tooltip-html']);
@@ -66,7 +67,7 @@ class SteamSearch
                 }
             }
 
-            $searchResult = new SearchResult($title, $url, $release, $review);
+            $searchResult = new SearchResult($title, $url, $release, $review, $appid);
 
             $results[] = $searchResult;
         });
