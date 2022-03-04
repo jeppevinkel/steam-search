@@ -25,6 +25,7 @@ class SteamSearch
     public function __construct()
     {
         $this->client = new Client();
+        $this->client->setServerParameter('Accept-Language', 'en-GB,en;q=0.5');
     }
 
     /**
