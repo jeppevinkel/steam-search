@@ -103,5 +103,7 @@ class QueryBuilderTest extends TestCase
         $this->assertEquals(MaxPrice::Fifty(), $queryBuilder->maxPrice(50)->getMaxPrice());
         $this->assertEquals(MaxPrice::FiftyFive(), $queryBuilder->maxPrice(55)->getMaxPrice());
         $this->assertEquals(MaxPrice::Sixty(), $queryBuilder->maxPrice(60)->getMaxPrice());
+        $this->assertEquals(MaxPrice::All(), $queryBuilder->maxPrice(null)->getMaxPrice());
+        $this->assertEquals(MaxPrice::All(), $queryBuilder->maxPrice(-1)->getMaxPrice());
     }
 }

@@ -122,6 +122,7 @@ class QueryBuilder
             case 60:
                 $this->maxPrice = Enums\MaxPrice::Sixty();
                 break;
+            case -1:
             case null:
                 $this->maxPrice = Enums\MaxPrice::All();
                 break;
