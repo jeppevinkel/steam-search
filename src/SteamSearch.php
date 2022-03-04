@@ -31,7 +31,7 @@ class SteamSearch
      * @param string|QueryBuilder $query
      * @return array<SearchResult>
      */
-    public function Search(mixed $query): array
+    public function Search($query): array
     {
         if ($query instanceof QueryBuilder) {
             $queryBuilder = $query;
