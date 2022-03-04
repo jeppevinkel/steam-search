@@ -41,4 +41,16 @@ class BaseEnumTest extends TestCase
         $released = SortBy::fromName('Released');
         $this->assertEquals('Released_DESC', $released->getValue());
     }
+
+    public function testFromValueThrowsException()
+    {
+        $this->expectException(\OutOfRangeException::class);
+        SortBy::fromValue('NotExisting');
+    }
+
+    public function testFromNameThrowsException()
+    {
+        $this->expectException(\OutOfRangeException::class);
+        SortBy::fromName('NotExisting');
+    }
 }
