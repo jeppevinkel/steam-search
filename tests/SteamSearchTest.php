@@ -29,6 +29,10 @@ class SteamSearchTest extends TestCase
         $this->assertIsString($result[0]->title);
         $this->assertIsString($result[0]->url);
         $this->assertEquals('Counter-Strike: Global Offensive', $result[0]->title, 'Title is not equal');
+
+        echo PHP_EOL . $result[0]->releaseDate . PHP_EOL;
+        var_dump($result[0]);
+
         $this->assertEquals(Carbon::createFromFormat('!d M, Y', '21 Aug, 2012'), $result[0]->releaseDate, 'Dates are not equal');
     }
 }
