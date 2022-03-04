@@ -1,6 +1,6 @@
 # Steam Search
 
-![Packagist Version](https://img.shields.io/packagist/v/jeppevinkel/steam-search)
+[![Packagist Version](https://img.shields.io/packagist/v/jeppevinkel/steam-search)](https://packagist.org/packages/jeppevinkel/steam-search)
 ![Packagist PHP Version Support](https://img.shields.io/packagist/php-v/jeppevinkel/steam-search)
 
 Api for searching games from the Steam store.
