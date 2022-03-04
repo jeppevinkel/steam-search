@@ -52,12 +52,11 @@ class SteamSearch
             $review = str_replace('<br>', ', ', $review);
 
             try {
-                $release = Carbon::createFromFormat('!d M, Y', $release);
+                $release = Carbon::createFromFormat('!d M, Y', trim($release));
             } catch (\Exception $e) {
                 echo PHP_EOL;
                 echo $release . PHP_EOL;
                 echo ($e->getMessage() . ' : ' . $e->getCode()) . PHP_EOL;
-                echo PHP_EOL;
                 $release = null;
             }
 
