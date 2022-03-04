@@ -1,0 +1,41 @@
+{
+  "name": "jeppevinkel/steam-search",
+  "description": "API for searching on the Steam store.",
+  "type": "library",
+  "keywords": [
+    "steam",
+    "api",
+    "search",
+    "store",
+    "games"
+  ],
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Jeppe Vinkel Beier",
+      "email": "jeppe@beiernet.dk"
+    }
+  ],
+  "require": {
+    "ext-dom": "*",
+    "fabpot/goutte": "^4.0",
+    "nesbot/carbon": "^2.57"
+  },
+  "autoload": {
+    "psr-4": {
+      "SteamSearch\\": "src/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "Tests\\": "tests/"
+    }
+  },
+  "require-dev": {
+    "phpunit/phpunit": "^9.5"
+  },
+  "scripts": {
+    "phpunit": "phpunit --verbose",
+    "tests": "@phpunit"
+  }
+}
