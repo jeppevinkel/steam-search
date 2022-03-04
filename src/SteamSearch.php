@@ -54,6 +54,7 @@ class SteamSearch
             try {
                 $release = Carbon::createFromFormat('!d M, Y', $release);
             } catch (\Exception $e) {
+                echo $e->getMessage();
                 $release = null;
             }
 
