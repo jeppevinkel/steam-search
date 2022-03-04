@@ -22,6 +22,19 @@ class SteamSearchTest extends TestCase
     public function testSearch()
     {
         $steamSearch = new SteamSearch();
+        $result = $steamSearch->search('counter-strike');
+
+        $this->assertIsArray($result);
+        $this->assertIsString($result[0]->title);
+        $this->assertIsString($result[0]->url);
+        $this->assertEquals('Counter-Strike: Global Offensive', $result[0]->title, 'Title is not equal');
+
+        $this->assertEquals(Carbon::createFromFormat('!d M, Y', '21 Aug, 2012'), $result[0]->releaseDate, 'Dates are not equal');
+    }
+
+    public function testSearchWithQueryBuilder()
+    {
+        $steamSearch = new SteamSearch();
         $queryBuilder = QueryBuilder::create()->search('counter-strike');
         $result = $steamSearch->search($queryBuilder);
 
