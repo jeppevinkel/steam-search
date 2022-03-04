@@ -20,7 +20,7 @@
     "php": ">=7.4",
     "ext-dom": "*",
     "fabpot/goutte": "^4.0",
-    "nesbot/carbon": "2.36"
+    "nesbot/carbon": "^2.57"
   },
   "autoload": {
     "psr-4": {
