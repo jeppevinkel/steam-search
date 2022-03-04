@@ -11,6 +11,7 @@
 
 namespace Tests;
 
+use SteamSearch\Enums\MaxPrice;
 use SteamSearch\Enums\SortBy;
 use SteamSearch\QueryBuilder;
 use PHPUnit\Framework\TestCase;
@@ -77,5 +78,30 @@ class QueryBuilderTest extends TestCase
         $queryBuilder = QueryBuilder::create();
         $queryBuilder->sortByReleaseDate();
         $this->assertEquals(SortBy::Released(), $queryBuilder->getSort());
+    }
+
+    public function testInvalidMaxPrice()
+    {
+        $queryBuilder = QueryBuilder::create();
+        $this->expectException(\InvalidArgumentException::class);
+        $queryBuilder->maxPrice(12);
+    }
+
+    public function testMaxPrice()
+    {
+        $queryBuilder = QueryBuilder::create();;
+        $this->assertEquals(MaxPrice::Free(), $queryBuilder->maxPrice(0)->getMaxPrice());
+        $this->assertEquals(MaxPrice::Five(), $queryBuilder->maxPrice(5)->getMaxPrice());
+        $this->assertEquals(MaxPrice::Ten(), $queryBuilder->maxPrice(10)->getMaxPrice());
+        $this->assertEquals(MaxPrice::Fifteen(), $queryBuilder->maxPrice(15)->getMaxPrice());
+        $this->assertEquals(MaxPrice::Twenty(), $queryBuilder->maxPrice(20)->getMaxPrice());
+        $this->assertEquals(MaxPrice::TwentyFive(), $queryBuilder->maxPrice(25)->getMaxPrice());
+        $this->assertEquals(MaxPrice::Thirty(), $queryBuilder->maxPrice(30)->getMaxPrice());
+        $this->assertEquals(MaxPrice::ThirtyFive(), $queryBuilder->maxPrice(35)->getMaxPrice());
+        $this->assertEquals(MaxPrice::Forty(), $queryBuilder->maxPrice(40)->getMaxPrice());
+        $this->assertEquals(MaxPrice::FortyFive(), $queryBuilder->maxPrice(45)->getMaxPrice());
+        $this->assertEquals(MaxPrice::Fifty(), $queryBuilder->maxPrice(50)->getMaxPrice());
+        $this->assertEquals(MaxPrice::FiftyFive(), $queryBuilder->maxPrice(55)->getMaxPrice());
+        $this->assertEquals(MaxPrice::Sixty(), $queryBuilder->maxPrice(60)->getMaxPrice());
     }
 }
