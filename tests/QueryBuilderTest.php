@@ -90,20 +90,19 @@ class QueryBuilderTest extends TestCase
     public function testMaxPrice()
     {
         $queryBuilder = QueryBuilder::create();;
-        $this->assertEquals(MaxPrice::Free(), $queryBuilder->maxPrice(0)->getMaxPrice());
-        $this->assertEquals(MaxPrice::Five(), $queryBuilder->maxPrice(5)->getMaxPrice());
-        $this->assertEquals(MaxPrice::Ten(), $queryBuilder->maxPrice(10)->getMaxPrice());
-        $this->assertEquals(MaxPrice::Fifteen(), $queryBuilder->maxPrice(15)->getMaxPrice());
-        $this->assertEquals(MaxPrice::Twenty(), $queryBuilder->maxPrice(20)->getMaxPrice());
-        $this->assertEquals(MaxPrice::TwentyFive(), $queryBuilder->maxPrice(25)->getMaxPrice());
-        $this->assertEquals(MaxPrice::Thirty(), $queryBuilder->maxPrice(30)->getMaxPrice());
-        $this->assertEquals(MaxPrice::ThirtyFive(), $queryBuilder->maxPrice(35)->getMaxPrice());
-        $this->assertEquals(MaxPrice::Forty(), $queryBuilder->maxPrice(40)->getMaxPrice());
-        $this->assertEquals(MaxPrice::FortyFive(), $queryBuilder->maxPrice(45)->getMaxPrice());
-        $this->assertEquals(MaxPrice::Fifty(), $queryBuilder->maxPrice(50)->getMaxPrice());
-        $this->assertEquals(MaxPrice::FiftyFive(), $queryBuilder->maxPrice(55)->getMaxPrice());
-        $this->assertEquals(MaxPrice::Sixty(), $queryBuilder->maxPrice(60)->getMaxPrice());
-        $this->assertEquals(MaxPrice::All(), $queryBuilder->maxPrice(null)->getMaxPrice());
-        $this->assertEquals(MaxPrice::All(), $queryBuilder->maxPrice(-1)->getMaxPrice());
+        $this->assertEquals(MaxPrice::Free(), $queryBuilder->maxPrice(0)->getMaxPrice(), '0 returns free');
+        $this->assertEquals(MaxPrice::Five(), $queryBuilder->maxPrice(5)->getMaxPrice(), '5 returns five');
+        $this->assertEquals(MaxPrice::Ten(), $queryBuilder->maxPrice(10)->getMaxPrice(), '10 returns ten');
+        $this->assertEquals(MaxPrice::Fifteen(), $queryBuilder->maxPrice(15)->getMaxPrice(), '15 returns fifteen');
+        $this->assertEquals(MaxPrice::Twenty(), $queryBuilder->maxPrice(20)->getMaxPrice(), '20 returns twenty');
+        $this->assertEquals(MaxPrice::TwentyFive(), $queryBuilder->maxPrice(25)->getMaxPrice(), '25 returns twenty five');
+        $this->assertEquals(MaxPrice::Thirty(), $queryBuilder->maxPrice(30)->getMaxPrice(), '30 returns thirty');
+        $this->assertEquals(MaxPrice::ThirtyFive(), $queryBuilder->maxPrice(35)->getMaxPrice(), '35 returns thirty five');
+        $this->assertEquals(MaxPrice::Forty(), $queryBuilder->maxPrice(40)->getMaxPrice(), '40 returns forty');
+        $this->assertEquals(MaxPrice::FortyFive(), $queryBuilder->maxPrice(45)->getMaxPrice(), '45 returns forty five');
+        $this->assertEquals(MaxPrice::Fifty(), $queryBuilder->maxPrice(50)->getMaxPrice(), '50 returns fifty');
+        $this->assertEquals(MaxPrice::FiftyFive(), $queryBuilder->maxPrice(55)->getMaxPrice(), '55 returns fifty five');
+        $this->assertEquals(MaxPrice::Sixty(), $queryBuilder->maxPrice(60)->getMaxPrice(), '60 returns sixty');
+        $this->assertEquals(MaxPrice::All(), $queryBuilder->maxPrice(-1)->getMaxPrice(), '-1 returns all');
     }
 }

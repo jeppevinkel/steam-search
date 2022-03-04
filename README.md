@@ -20,6 +20,12 @@ use SteamSearch\SteamSearch;
 $steamSearch = new SteamSearch();
 $queryBuilder = QueryBuilder::create()->search('counter-strike')->sortByReleaseDate();
 $result = $steamSearch->search($queryBuilder);
+
+// Results can also be filtered by max price.
+$queryBuilder = QueryBuilder::create()->search('counter-strike')->sortByReleaseDate()->maxPrice(50);
+// Valid values for maxPrice are:
+// 0, 5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 55, 60
+// To get all results, use maxPrice(-1), this is also the default value.
 ```
 
 The result is an array of SearchResult objects.
