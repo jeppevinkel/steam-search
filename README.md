@@ -37,6 +37,7 @@ The result is an array of SearchResult objects.
 They each have the following properties:
 ```php
 public string $title;
+public int $appId;
 public string $url;
 public ?Carbon $releaseDate;
 public string $reviewSummary;
