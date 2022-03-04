@@ -52,7 +52,7 @@ class SteamSearch
             $review = str_replace('<br>', ', ', $review);
 
             try {
-                $release = Carbon::parse($release);
+                $release = Carbon::createFromFormat('!d M, Y', $release);
             } catch (\Exception $e) {
                 $release = null;
             }

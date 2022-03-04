@@ -11,8 +11,6 @@
 
 namespace SteamSearch;
 
-use JetBrains\PhpStorm\Pure;
-
 class QueryBuilder
 {
     const STEAM_SEARCH_URL = 'https://store.steampowered.com/search/';
@@ -25,11 +23,10 @@ class QueryBuilder
         return self::STEAM_SEARCH_URL . '?term=' . $this->term . '&sort_by=' . $this->sort->getValue();
     }
 
-    public static function create(): self
+    public static function create($term = ''): self
     {
         $instance = new self();
-        $instance->sort = Enums\SortBy::Relevance();
-        return $instance;
+        return $instance->search($term)->sortByRelevance();
     }
 
     public function search(string $term): self
@@ -72,5 +69,15 @@ class QueryBuilder
     {
         $this->sort = Enums\SortBy::Reviews();
         return $this;
+    }
+
+    public function getTerm(): string
+    {
+        return $this->term;
+    }
+
+    public function getSort(): Enums\SortBy
+    {
+        return $this->sort;
     }
 }
