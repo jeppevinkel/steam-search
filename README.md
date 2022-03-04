@@ -1,6 +1,6 @@
 # Steam Search
 
-[![Packagist Version](https://img.shields.io/packagist/v2/jeppevinkel/steam-search)](https://packagist.org/packages/jeppevinkel/steam-search)
+[![Packagist Version](https://img.shields.io/packagist/v/jeppevinkel/steam-search)](https://packagist.org/packages/jeppevinkel/steam-search)
 ![Packagist PHP Version Support](https://img.shields.io/packagist/php-v/jeppevinkel/steam-search)
 [![Codecov](https://img.shields.io/codecov/c/github/jeppevinkel/steam-search)](https://app.codecov.io/gh/jeppevinkel/steam-search/)
 
