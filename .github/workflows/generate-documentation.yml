@@ -25,9 +25,6 @@ jobs:
           args: https://phpdoc.org/phpDocumentor.phar
         
       - run: ls
-
-#       - name: Set exeute permition of phpdoc
-#         run: chmod +x ./phpDocumentor.phar
         
       - name: Build the documentation
         run: php phpDocumentor.phar -d src -t docs --title "steam-search documentation"
