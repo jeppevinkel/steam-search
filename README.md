@@ -5,6 +5,7 @@
 [![Codecov](https://img.shields.io/codecov/c/github/jeppevinkel/steam-search)](https://app.codecov.io/gh/jeppevinkel/steam-search/)
 
 Api for searching games from the Steam store.
+This search API works by calling the regular steam store page and scraping the results from the page. It doesn't yet support scrolling the page, so it might be limited in the number of results per search query.
 
 ## Installation
 Use [composer] to install the package.
