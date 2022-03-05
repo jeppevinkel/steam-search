@@ -11,6 +11,9 @@
 
 namespace SteamSearch;
 
+use SteamSearch\Enums\SortBy;
+use SteamSearch\Models\VRSupport;
+
 class QueryBuilder
 {
     const STEAM_SEARCH_URL = 'https://store.steampowered.com/search/';
@@ -18,58 +21,103 @@ class QueryBuilder
     private string $term = '';
     private Enums\SortBy $sort;
     private Enums\MaxPrice $maxPrice;
+    private VRSupport $vrSupport;
+    private bool $excludeVROnly = false;
+
+    private function __construct()
+    {
+        $this->vrSupport = new VRSupport();
+        $this->sort = SortBy::Relevance();
+        $this->maxPrice = Enums\MaxPrice::All();
+    }
 
     public function __toString(): string
     {
         return self::STEAM_SEARCH_URL . '?' . http_build_query([
-            'term' => $this->term,
-            'sort_by' => $this->sort,
-            'max_price' => $this->maxPrice,
-        ]);
+                'term' => $this->term,
+                'sort_by' => $this->sort,
+                'max_price' => $this->maxPrice,
+                'vrsupport' => $this->vrSupport->toQueryString(),
+                'unvrsupport' => $this->excludeVROnly ? '401' : null,
+            ]);
     }
 
-    public static function create($term = ''): self
+    /**
+     * Create a new QueryBuilder instance.
+     * @param string $term
+     * @return QueryBuilder
+     */
+    public static function create(string $term = ''): QueryBuilder
     {
         $instance = new self();
-        return $instance->search($term)->sortByRelevance()->maxPrice(null);
+        return $instance->search($term);
     }
 
+    /**
+     * Set the search term.
+     * @param string $term
+     * @return $this
+     */
     public function search(string $term): self
     {
         $this->term = $term;
         return $this;
     }
 
+    /**
+     * Default steam search sort order.
+     * @return $this
+     */
     public function sortByRelevance(): self
     {
         $this->sort = Enums\SortBy::Relevance();
         return $this;
     }
 
+    /**
+     * Sort by release date. Most recent results first.
+     * @return $this
+     */
     public function sortByReleaseDate(): self
     {
         $this->sort = Enums\SortBy::Released();
         return $this;
     }
 
+    /**
+     * Sort by name. Alphabetical order.
+     * @return $this
+     */
     public function sortByName(): self
     {
         $this->sort = Enums\SortBy::Name();
         return $this;
     }
 
+    /**
+     * Sort by price. Lowest price first.
+     * @return $this
+     */
     public function sortByPriceAscending(): self
     {
         $this->sort = Enums\SortBy::PriceAsc();
         return $this;
     }
 
+    /**
+     * Sort by price. Highest price first.
+     * @return $this
+     */
     public function sortByPriceDescending(): self
     {
         $this->sort = Enums\SortBy::PriceDesc();
         return $this;
     }
 
+    /**
+     * Sort by review score. Highest score first.
+     * @return $this
+     */
     public function sortByReviewScore(): self
     {
         $this->sort = Enums\SortBy::Reviews();
@@ -77,10 +125,101 @@ class QueryBuilder
     }
 
     /**
-     * @param integer|null $maxPrice
+     * Filter results to show titles that only support VR.
      * @return $this
      */
-    public function maxPrice(?int $maxPrice): self
+    public function vrOnly(): self
+    {
+        $this->vrSupport->setVrOnly(true);
+        return $this;
+    }
+
+    /**
+     * Filter results to show titles with VR support.
+     * @return $this
+     */
+    public function vrSupported(): self
+    {
+        $this->vrSupport->setVrSupported(true);
+        return $this;
+    }
+
+    /**
+     * Filter results to show titles that support the Valve Index.
+     * @return $this
+     */
+    public function vrValveIndex(): self
+    {
+        $this->vrSupport->setValveIndex(true);
+        return $this;
+    }
+
+    /**
+     * Filter results to show titles that support the HTC Vive.
+     * @return $this
+     */
+    public function vrHtcVive(): self
+    {
+        $this->vrSupport->setHtcVive(true);
+        return $this;
+    }
+
+    /**
+     * Filter results to show titles that support the Oculus Rift.
+     * @return $this
+     */
+    public function vrOculusRift(): self
+    {
+        $this->vrSupport->setOculusRift(true);
+        return $this;
+    }
+
+    /**
+     * Filter results to show titles that support Windows Mixed Reality.
+     * @return $this
+     */
+    public function vrWindowsMixedReality(): self
+    {
+        $this->vrSupport->setWindowsMixedReality(true);
+        return $this;
+    }
+
+    /**
+     * Filter results to show titles that support tracked motion controllers.
+     * @return $this
+     */
+    public function vrTrackedMotionControllers(): self
+    {
+        $this->vrSupport->setTrackedMotionControllers(true);
+        return $this;
+    }
+
+    /**
+     * Filter results to show titles that support gamepads.
+     * @return $this
+     */
+    public function vrGamepad(): self
+    {
+        $this->vrSupport->setGamepad(true);
+        return $this;
+    }
+
+    /**
+     * Filter results to show titles that support keyboard and mouse.
+     * @return $this
+     */
+    public function vrKeyboardMouse(): self
+    {
+        $this->vrSupport->setKeyboardMouse(true);
+        return $this;
+    }
+
+    /**
+     * Set the maximum price to search for.
+     * @param integer $maxPrice
+     * @return $this
+     */
+    public function maxPrice(int $maxPrice): self
     {
         switch ($maxPrice) {
             case 0:

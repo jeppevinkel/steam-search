@@ -18,8 +18,6 @@ use Symfony\Component\DomCrawler\Crawler;
 
 class SteamSearch
 {
-    const STEAM_SEARCH_URL = 'https://store.steampowered.com/search/';
-
     private Client $client;
 
     public function __construct()
@@ -29,6 +27,7 @@ class SteamSearch
     }
 
     /**
+     * Perform a search on the Steam store using either a basic search string or a QueryBuilder with custom parameters.
      * @param string|QueryBuilder $query
      * @return array<SearchResult>
      */
