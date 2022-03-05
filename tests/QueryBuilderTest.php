@@ -105,4 +105,77 @@ class QueryBuilderTest extends TestCase
         $this->assertEquals(MaxPrice::Sixty(), $queryBuilder->maxPrice(60)->getMaxPrice(), '60 returns sixty');
         $this->assertEquals(MaxPrice::All(), $queryBuilder->maxPrice(-1)->getMaxPrice(), '-1 returns all');
     }
+
+    public function testVrOnly()
+    {
+        $queryBuilder = QueryBuilder::create()->vrOnly();
+        $this->assertEquals('https://store.steampowered.com/search/?term=&vrsupport=401', (string)$queryBuilder);
+    }
+
+    public function testVrSupported()
+    {
+        $queryBuilder = QueryBuilder::create()->vrSupported();
+        $this->assertEquals('https://store.steampowered.com/search/?term=&vrsupport=402', (string)$queryBuilder);
+    }
+
+    public function testVrValveIndex()
+    {
+        $queryBuilder = QueryBuilder::create()->vrValveIndex();
+        $this->assertEquals('https://store.steampowered.com/search/?term=&vrsupport=105', (string)$queryBuilder);
+    }
+
+    public function testVrHtcVive()
+    {
+        $queryBuilder = QueryBuilder::create()->vrHtcVive();
+        $this->assertEquals('https://store.steampowered.com/search/?term=&vrsupport=101', (string)$queryBuilder);
+    }
+
+    public function testVrOculusRift()
+    {
+        $queryBuilder = QueryBuilder::create()->vrOculusRift();
+        $this->assertEquals('https://store.steampowered.com/search/?term=&vrsupport=102', (string)$queryBuilder);
+    }
+
+    public function testVrWindowsMixedReality()
+    {
+        $queryBuilder = QueryBuilder::create()->vrWindowsMixedReality();
+        $this->assertEquals('https://store.steampowered.com/search/?term=&vrsupport=104', (string)$queryBuilder);
+    }
+
+    public function testVrTrackedMotionControllers()
+    {
+        $queryBuilder = QueryBuilder::create()->vrTrackedMotionControllers();
+        $this->assertEquals('https://store.steampowered.com/search/?term=&vrsupport=201', (string)$queryBuilder);
+    }
+
+    public function testVrGamepad()
+    {
+        $queryBuilder = QueryBuilder::create()->vrGamepad();
+        $this->assertEquals('https://store.steampowered.com/search/?term=&vrsupport=202', (string)$queryBuilder);
+    }
+
+    public function testVrKeyboardMouse()
+    {
+        $queryBuilder = QueryBuilder::create()->vrKeyboardMouse();
+        $this->assertEquals('https://store.steampowered.com/search/?term=&vrsupport=203', (string)$queryBuilder);
+    }
+
+    public function testVrSeated()
+    {
+        $queryBuilder = QueryBuilder::create()->vrSeated();
+        $this->assertEquals('https://store.steampowered.com/search/?term=&vrsupport=301', (string)$queryBuilder);
+    }
+
+    public function testVrStanding()
+    {
+        $queryBuilder = QueryBuilder::create()->vrStanding();
+        $this->assertEquals('https://store.steampowered.com/search/?term=&vrsupport=302', (string)$queryBuilder);
+    }
+
+    public function testVrRoomScale()
+    {
+        $queryBuilder = QueryBuilder::create()->vrRoomScale();
+        $this->assertEquals('https://store.steampowered.com/search/?term=&vrsupport=303', (string)$queryBuilder);
+    }
+
 }

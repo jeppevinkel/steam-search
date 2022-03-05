@@ -214,6 +214,24 @@ class QueryBuilder
         return $this;
     }
 
+    public function vrSeated(): self
+    {
+        $this->vrSupport->setSeated(true);
+        return $this;
+    }
+
+    public function vrStanding(): self
+    {
+        $this->vrSupport->setStanding(true);
+        return $this;
+    }
+
+    public function vrRoomScale(): self
+    {
+        $this->vrSupport->setRoomScale(true);
+        return $this;
+    }
+
     /**
      * Set the maximum price to search for.
      * @param integer $maxPrice
