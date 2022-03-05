@@ -32,7 +32,7 @@ jobs:
 #         run: chmod +x ./phpDocumentor.phar
         
       - name: Build the documentation
-        run: node phpDocumentor.phar -d src -t docs
+        run: php phpDocumentor.phar -d src -t docs
         
       - name: Publish on GitHub Pages
         uses: ftnext/action-push-ghpages@v1.0.0
