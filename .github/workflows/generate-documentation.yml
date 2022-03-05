@@ -26,11 +26,11 @@ jobs:
         with:
           args: -O phpdoc https://phpdoc.org/phpDocumentor.phar
 
-      - name: Set exeute permition of phpdoc
-        run: chmod +x phpdoc
+#       - name: Set exeute permition of phpdoc
+#         run: chmod +x phpdoc
         
       - name: Build the documentation
-        run: phpdog -d src -t docs
+        run: phpdoc -d src -t docs
         
       - name: Publish on GitHub Pages
         uses: ftnext/action-push-ghpages@v1.0.0
