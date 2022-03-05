@@ -43,6 +43,10 @@ public ?Carbon $releaseDate;
 public string $reviewSummary;
 ```
 
+## Docs
+
+[https://jeppevinkel.github.io/steam-search](https://jeppevinkel.github.io/steam-search/)
+
 ## Contributing
 Pull requests are welcome. For design changes, please open an issue to discuss what you would like to change.
 
