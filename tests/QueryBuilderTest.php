@@ -178,4 +178,9 @@ class QueryBuilderTest extends TestCase
         $this->assertEquals('https://store.steampowered.com/search/?term=&vrsupport=303', (string)$queryBuilder);
     }
 
+    public function testVrSeatedAndRoomScale()
+    {
+        $queryBuilder = QueryBuilder::create()->vrSeated()->vrRoomScale();
+        $this->assertEquals('https://store.steampowered.com/search/?term=&vrsupport='.urlencode('301,303'), (string)$queryBuilder);
+    }
 }
