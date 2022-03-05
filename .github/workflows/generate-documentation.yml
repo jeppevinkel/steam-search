@@ -30,7 +30,7 @@ jobs:
 #         run: chmod +x phpdoc
         
       - name: Build the documentation
-        run: phpdoc -d src -t docs
+        run: ./phpdoc -d src -t docs
         
       - name: Publish on GitHub Pages
         uses: ftnext/action-push-ghpages@v1.0.0
