@@ -24,15 +24,15 @@ jobs:
       - name: Download phpDocumentor
         uses: wei/wget@v1.1.1
         with:
-          args: -O phpdoc https://phpdoc.org/phpDocumentor.phar
+          args: https://phpdoc.org/phpDocumentor.phar
         
       - run: ls
 
       - name: Set exeute permition of phpdoc
-        run: chmod +x ./phpdoc
+        run: chmod +x ./phpDocumentor.phar
         
       - name: Build the documentation
-        run: ./phpdoc -d src -t docs
+        run: ./phpDocumentor.phar -d src -t docs
         
       - name: Publish on GitHub Pages
         uses: ftnext/action-push-ghpages@v1.0.0
