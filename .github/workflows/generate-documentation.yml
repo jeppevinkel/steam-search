@@ -26,8 +26,8 @@ jobs:
         with:
           args: -O phpdoc https://phpdoc.org/phpDocumentor.phar
 
-#       - name: Set exeute permition of phpdoc
-#         run: chmod +x phpdoc
+      - name: Set exeute permition of phpdoc
+        run: chmod +x ./phpdoc
         
       - name: Build the documentation
         run: ./phpdoc -d src -t docs
