@@ -29,6 +29,8 @@ jobs:
       - name: Set exeute permition of phpdoc
         run: chmod +x ./phpdoc
         
+      - run: ls
+        
       - name: Build the documentation
         run: ./phpdoc -d src -t docs
         
