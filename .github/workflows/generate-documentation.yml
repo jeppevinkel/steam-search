@@ -1,0 +1,39 @@
+name: Generate PHP Documentation
+
+on:
+#   push:
+#     branches: [ master ]
+#   pull_request:
+#     branches: [ master ]
+
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Setup PHP Action
+        uses: shivammathur/setup-php@1.8.2
+        with:
+          extensions: intl
+          php-version: "8.1"
+    
+      - uses: actions/checkout@v2
+
+      - name: Download phpDocumentor
+        uses: wei/wget@v1.1.1
+        with:
+          args: -O phpdoc https://phpdoc.org/phpDocumentor.phar
+
+      - name: Set exeute permition of phpdoc
+        run: chmod +x phpdoc
+        
+      - name: Build the documentation
+        run: phpdog -d src -t docs
+        
+      - name: Publish on GitHub Pages
+        uses: ftnext/action-push-ghpages@v1.0.0
+        with:
+          build_dir: docs
+          github_token: ${{ secrets.GITHUB_TOKEN }}
