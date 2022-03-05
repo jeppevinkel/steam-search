@@ -28,11 +28,11 @@ jobs:
         
       - run: ls
 
-      - name: Set exeute permition of phpdoc
-        run: chmod +x ./phpDocumentor.phar
+#       - name: Set exeute permition of phpdoc
+#         run: chmod +x ./phpDocumentor.phar
         
       - name: Build the documentation
-        run: ./phpDocumentor.phar -d src -t docs
+        run: node phpDocumentor.phar -d src -t docs
         
       - name: Publish on GitHub Pages
         uses: ftnext/action-push-ghpages@v1.0.0
